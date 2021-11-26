@@ -1,18 +1,17 @@
 extends Node
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	$Map.generate()
 	$Map.fixMap()
 	$Enemies.startEnemySpawner()
+	var _cheesePickup = $Cheese.connect("pickup", self, "nextMap")
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func nextMap() -> void:
+	# Stop gamelogic
+	# Remove enemies
+	# Respawn player
+	# Regenerate map
+	# Start gamelogic
+	pass
