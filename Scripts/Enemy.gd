@@ -1,25 +1,25 @@
 extends KinematicBody2D
 
-var speed = 150
+var speed : int = 150
 var nav = null setget setNav
-var path = []
-var goal = Vector2()
+var path : Array = []
+var goal : Vector2 = Vector2()
 
-func _ready():
+func _ready() -> void:
 	pass
 
 # Denna uppdaterar pathen, så den är nödvändig för att uppdatera AI
-func setNav(newNav):
+func setNav(newNav) -> void:
 	nav = newNav
 	updatePath()
 
-func updatePath():
+func updatePath() -> void:
 	path = nav.get_simple_path(position, goal, false)
 	if path.size() == 0:
 		queue_free()
 
 # /2019/11/19/godot-tutorial-how-to-use-navigation2d-for-pathfinding/
-func _process(delta):
+func _process(delta) -> void:
 	# Calculate the movement distance for this frame
 	var distance_to_walk = speed * delta
 	

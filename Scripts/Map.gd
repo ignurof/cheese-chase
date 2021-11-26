@@ -12,10 +12,6 @@ var tileWall : int = 1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	randomize() # Generate a new RNG seed
-	generate()
-	fixMap()
-	#DEBUG
-	get_parent().get_node("Enemies").startEnemySpawner()
 
 func generate() -> void:
 	for x in range(sceneWidth):

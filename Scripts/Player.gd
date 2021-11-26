@@ -66,7 +66,7 @@ func _process(delta) -> void:
 	# Update player position based on values and times by delta to not make it weird by fps jank
 	move_and_slide(velocity)
 
-func rotateSmoothly(currentRotDegrees, target, delta):
+func rotateSmoothly(currentRotDegrees, target, delta) -> void:
 	var minAngle = deg2rad(currentRotDegrees)
 	var maxAngle = deg2rad(target)
 	rotation = lerp_angle(minAngle, maxAngle, delta)
