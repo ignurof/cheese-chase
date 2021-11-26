@@ -57,3 +57,6 @@ script = ExtResource( 3 )
 [node name="TileMap" type="TileMap" parent="Navigation2D"]
 tile_set = SubResource( 2 )
 format = 1
+
+[node name="EnemySpawn" type="Position2D" parent="."]
+position = Vector2( 1246, 34 )

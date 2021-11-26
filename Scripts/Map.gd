@@ -14,6 +14,8 @@ func _ready() -> void:
 	randomize() # Generate a new RNG seed
 	generate()
 	fixMap()
+	#DEBUG
+	get_parent().get_node("Enemies").startEnemySpawner()
 
 func generate() -> void:
 	for x in range(sceneWidth):
