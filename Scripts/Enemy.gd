@@ -13,6 +13,11 @@ func setNav(newNav) -> void:
 	nav = newNav
 	updatePath()
 
+func update() -> void:
+	var currentPos = get_parent().get_parent().get_node("Player").position
+	goal = currentPos
+	updatePath()
+
 func updatePath() -> void:
 	path = nav.get_simple_path(position, goal, false)
 	if path.size() == 0:

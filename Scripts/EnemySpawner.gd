@@ -20,7 +20,7 @@ func enemySpawner() -> void:
 	var e = enemy.instance()
 	add_child(e)
 	e.position = start_pos
-	e.goal = end_pos
+	#e.goal = end_pos
 	e.nav = nav
 	spawnedEnemies += 1
 	enemyList.append(e)
@@ -30,11 +30,7 @@ func enemySpawner() -> void:
 		$AITimer.start()
 
 func updateAI() -> void:
-	var currentPos = get_parent().get_node("Player").position
-	for x in range(enemyList.size()):
-		#print(enemyList[x].goal)
-		enemyList[x].goal = currentPos
-		enemyList[x].nav = nav # Must update nav so it updates path
+	get_tree().call_group("enemies", "update")
 
 func despawnEnemies() -> void:
 	enemyList = [] # Reset array
