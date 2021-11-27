@@ -8,6 +8,12 @@ func _ready() -> void:
 	var _scoreChange = $HUD.connect("scoreChange", self, "next")
 	var _startButton = $Menu/StartButton.connect("pressed", self, "start")
 	var _quitButton = $Menu/QuitButton.connect("pressed", self, "quit")
+	var _playerHit = $Player.connect("gameover", self, "gameOver")
+
+func gameOver() -> void:
+	print("gameover bruv")
+	pause()
+	mainMenu()
 
 func mainMenu() -> void:
 	$HUD.hide()
@@ -52,3 +58,5 @@ func mapTransition() -> void:
 	$HUD/ColorRect.show()
 	yield(get_tree().create_timer(2.0), "timeout")
 	$HUD/ColorRect.hide()
+
+## TODO: Gör en gameover när fienden går in i spelaren
