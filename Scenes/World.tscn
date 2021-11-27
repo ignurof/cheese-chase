@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Map.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/Cheese.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=7]
 
 [node name="World" type="Node"]
 script = ExtResource( 5 )
@@ -26,3 +27,5 @@ wait_time = 0.3
 
 [node name="Cheese" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1253, 87 )
+
+[node name="HUD" parent="." instance=ExtResource( 7 )]

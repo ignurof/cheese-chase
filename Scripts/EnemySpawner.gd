@@ -15,9 +15,6 @@ func _ready():
 	var _spawnTimer = $SpawnTimer.connect("timeout", self, "enemySpawner")
 	var _aiTimer = $AITimer.connect("timeout", self, "updateAI")
 
-func startEnemySpawner() -> void:
-	$SpawnTimer.start()
-
 func enemySpawner() -> void:
 	var e = enemy.instance()
 	add_child(e)
