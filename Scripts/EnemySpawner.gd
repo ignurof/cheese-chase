@@ -8,6 +8,7 @@ onready var nav = get_parent().get_node("Map/Navigation2D")
 onready var map = get_parent().get_node("Map/Navigation2D/TileMap")
 
 var spawnedEnemies : int = 0
+var maxSpawnedEnemies : int = 1
 var enemyList : Array
 
 # Called when the node enters the scene tree for the first time.
@@ -24,7 +25,7 @@ func enemySpawner() -> void:
 	spawnedEnemies += 1
 	enemyList.append(e)
 	
-	if spawnedEnemies >= 2:
+	if spawnedEnemies >= maxSpawnedEnemies:
 		$SpawnTimer.stop()
 		$AITimer.start()
 
@@ -34,3 +35,8 @@ func updateAI() -> void:
 		#print(enemyList[x].goal)
 		enemyList[x].goal = currentPos
 		enemyList[x].nav = nav # Must update nav so it updates path
+
+func despawnEnemies() -> void:
+	enemyList = [] # Reset array
+	# Remove enemies
+	get_tree().call_group("enemies", "queue_free")

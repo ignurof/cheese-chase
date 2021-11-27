@@ -1,5 +1,6 @@
 extends Control
 
+signal scoreChange
 var score : int
 
 # Called when the node enters the scene tree for the first time.
@@ -9,3 +10,4 @@ func _ready() -> void:
 func addScore() -> void:
 	score += 1
 	$Score.text = str(score)
+	emit_signal("scoreChange")
