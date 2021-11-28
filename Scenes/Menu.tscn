@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Art/Rubik-VariableFont_wght.ttf" type="DynamicFontData" id=1]
 
@@ -13,6 +13,42 @@ font_data = ExtResource( 1 )
 size = 64
 font_data = ExtResource( 1 )
 
+[sub_resource type="DynamicFont" id=3]
+size = 21
+outline_size = 1
+outline_color = Color( 1, 0.819608, 0, 1 )
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "Jam"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("GoGodotJam:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -3.0, 3.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("GoGodotJam:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.33, 1.33 ) ]
+}
+
 [node name="Menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -21,7 +57,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="."]
 margin_left = -21.0
 margin_top = -25.0
 margin_right = 1298.0
@@ -31,7 +67,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
+[node name="Title" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -413.0
@@ -47,10 +83,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -200.0
-margin_top = -32.0
-margin_right = 200.0
-margin_bottom = 68.0
+margin_left = -405.0
+margin_top = 9.0
+margin_right = -5.0
+margin_bottom = 109.0
 custom_fonts/font = SubResource( 1 )
 text = "Start"
 __meta__ = {
@@ -62,12 +98,33 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -200.0
-margin_top = 143.0
-margin_right = 200.0
-margin_bottom = 243.0
+margin_left = -405.0
+margin_top = 184.0
+margin_right = -5.0
+margin_bottom = 284.0
 custom_fonts/font = SubResource( 1 )
 text = "Quit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="GoGodotJam" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -144.5
+margin_top = -143.0
+margin_right = 144.5
+margin_bottom = -117.0
+rect_rotation = -3.0
+rect_pivot_offset = Vector2( 144, 0 )
+custom_colors/font_color = Color( 0.996078, 0.92549, 0.596078, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Submission for GoGodotJam 2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Jam = SubResource( 4 )

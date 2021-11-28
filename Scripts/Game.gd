@@ -19,6 +19,7 @@ func gameOver() -> void:
 func mainMenu() -> void:
 	$HUD.hide()
 	$Menu.show()
+	$Menu/AnimationPlayer.play("Jam")
 
 func quit() -> void:
 	get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)
