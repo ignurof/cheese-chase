@@ -44,7 +44,7 @@ func next() -> void:
 	$Map.fixMap()
 	$Cheese.spawn()
 	
-	$Enemies.maxSpawnedEnemies *= 2
+	$Enemies.maxSpawnedEnemies = ($Enemies.maxSpawnedEnemies * 2)
 	$Enemies/SpawnTimer.start()
 
 func pause() -> void:
