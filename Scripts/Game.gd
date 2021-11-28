@@ -26,7 +26,7 @@ func start() -> void:
 	$HUD.show()
 	$Menu.hide()
 	# Start first game, without enemies
-	mapTransition()
+	# mapTransition()
 	$Player.position = $Map/PlayerSpawn.position
 	$Player.show()
 	$Map.generate()
