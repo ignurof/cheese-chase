@@ -56,9 +56,10 @@ func pause() -> void:
 
 func mapTransition() -> void:
 	# Map transition
-	$HUD/ColorRect.show()
-	yield(get_tree().create_timer(2.0), "timeout")
-	$HUD/ColorRect.hide()
+	$HUD/MapTransition.show()
+	$HUD/MapTransition/AnimationPlayer.play("Size")
+	yield(get_tree().create_timer(3.0), "timeout")
+	$HUD/MapTransition.hide()
 
 func firstTransition() -> void:
 	$HUD/FirstTransition.show()

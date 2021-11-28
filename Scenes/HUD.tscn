@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Art/Rubik-VariableFont_wght.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Art/IMG_2388.PNG" type="Texture" id=2]
@@ -11,7 +11,25 @@ fallback/0 = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 64
+use_filter = true
 font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "Size"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedLabel:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 2, 2 ) ]
+}
 
 [sub_resource type="DynamicFont" id=3]
 size = 64
@@ -44,25 +62,50 @@ margin_bottom = 1030.0
 rect_scale = Vector2( 0.025, 0.025 )
 texture = ExtResource( 2 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="MapTransition" type="ColorRect" parent="."]
 visible = false
 margin_left = -64.0
 margin_top = -64.0
 margin_right = 1344.0
 margin_bottom = 768.0
 color = Color( 0.462745, 0.286275, 0.231373, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Label" type="Label" parent="ColorRect"]
+[node name="Label" type="Label" parent="MapTransition"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -128.0
-margin_top = -32.0
-margin_right = 185.0
-margin_bottom = 44.0
+margin_left = -156.5
+margin_top = -38.0
+margin_right = 156.5
+margin_bottom = 38.0
 custom_fonts/font = SubResource( 2 )
 text = "Get Ready!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedLabel" type="Label" parent="MapTransition"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -103.0
+margin_top = -193.0
+margin_right = 105.625
+margin_bottom = -117.0
+rect_pivot_offset = Vector2( 104, 0 )
+custom_fonts/font = SubResource( 2 )
+text = "Size +1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MapTransition"]
+anims/Size = SubResource( 4 )
 
 [node name="FirstTransition" type="ColorRect" parent="."]
 visible = false
