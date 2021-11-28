@@ -11,3 +11,7 @@ func addScore() -> void:
 	score += 1
 	$Score.text = str(score)
 	emit_signal("scoreChange")
+
+func reset() -> void:
+	score = 0
+	$Score.text = str(score)

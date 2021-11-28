@@ -12,6 +12,7 @@ func _ready() -> void:
 
 func gameOver() -> void:
 	print("gameover bruv")
+	$HUD.reset()
 	pause()
 	mainMenu()
 
