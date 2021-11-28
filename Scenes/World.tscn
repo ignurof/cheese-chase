@@ -16,6 +16,7 @@ script = ExtResource( 5 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 32, 672 )
+moveSpeed = 506
 
 [node name="Enemies" type="Node2D" parent="."]
 script = ExtResource( 3 )

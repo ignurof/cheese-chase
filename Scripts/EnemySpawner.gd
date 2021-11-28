@@ -24,10 +24,10 @@ func enemySpawner() -> void:
 	e.nav = nav
 	spawnedEnemies += 1
 	enemyList.append(e)
+	$AITimer.start()
 	
 	if spawnedEnemies >= maxSpawnedEnemies:
 		$SpawnTimer.stop()
-		$AITimer.start()
 
 func updateAI() -> void:
 	get_tree().call_group("enemies", "update")
