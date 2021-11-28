@@ -15,14 +15,14 @@ func _ready() -> void:
 	var _onHit = $Area2D.connect("body_entered", self, "playerHit")
 
 func playerHit(body) -> void:
-	if body.name != "Enemy":
+	if !"Enemy" in body.name:
 		return
 	
 	emit_signal("gameover")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta) -> void:
+# Called every physics frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta) -> void:
 	var velocity : Vector2 = Vector2()
 	# Get player input
 	if Input.is_action_pressed("ui_up"):
