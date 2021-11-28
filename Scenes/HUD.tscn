@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Art/Rubik-VariableFont_wght.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Art/IMG_2388.PNG" type="Texture" id=2]
@@ -10,6 +10,10 @@ font_data = ExtResource( 1 )
 fallback/0 = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
+size = 64
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
 size = 64
 font_data = ExtResource( 1 )
 
@@ -46,7 +50,7 @@ margin_left = -64.0
 margin_top = -64.0
 margin_right = 1344.0
 margin_bottom = 768.0
-color = Color( 0, 0.160784, 0.176471, 1 )
+color = Color( 0.462745, 0.286275, 0.231373, 1 )
 
 [node name="Label" type="Label" parent="ColorRect"]
 anchor_left = 0.5
@@ -59,3 +63,26 @@ margin_right = 185.0
 margin_bottom = 44.0
 custom_fonts/font = SubResource( 2 )
 text = "Get Ready!"
+
+[node name="FirstTransition" type="ColorRect" parent="."]
+visible = false
+margin_left = -39.0
+margin_top = -49.0
+margin_right = 1335.0
+margin_bottom = 777.0
+color = Color( 0.462745, 0.286275, 0.231373, 1 )
+
+[node name="Label" type="Label" parent="FirstTransition"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -230.5
+margin_top = -38.0
+margin_right = 230.5
+margin_bottom = 38.0
+custom_fonts/font = SubResource( 3 )
+text = "Get the Cheese!"
+__meta__ = {
+"_edit_use_anchors_": false
+}

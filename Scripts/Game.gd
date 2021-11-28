@@ -26,7 +26,7 @@ func start() -> void:
 	$HUD.show()
 	$Menu.hide()
 	# Start first game, without enemies
-	# mapTransition()
+	firstTransition()
 	$Player.position = $Map/PlayerSpawn.position
 	$Player.show()
 	$Map.generate()
@@ -42,7 +42,7 @@ func next() -> void:
 	$Map.fixMap()
 	$Cheese.spawn()
 	
-	$Enemies.maxSpawnedEnemies = ($Enemies.maxSpawnedEnemies * 2)
+	$Enemies.maxSpawnedEnemies *= 2
 	$Enemies/SpawnTimer.start()
 
 func pause() -> void:
@@ -58,5 +58,10 @@ func mapTransition() -> void:
 	$HUD/ColorRect.show()
 	yield(get_tree().create_timer(2.0), "timeout")
 	$HUD/ColorRect.hide()
+
+func firstTransition() -> void:
+	$HUD/FirstTransition.show()
+	yield(get_tree().create_timer(3.0), "timeout")
+	$HUD/FirstTransition.hide()
 
 ## TODO: Gör en gameover när fienden går in i spelaren
