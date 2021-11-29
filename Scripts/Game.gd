@@ -31,6 +31,7 @@ func start() -> void:
 	# Start first game, without enemies
 	firstTransition()
 	$Player.position = $Map/PlayerSpawn.position
+	$Player.scale = Vector2(1, 1)
 	$Player.show()
 	$Map.generate()
 	$Map.fixMap()
@@ -40,6 +41,7 @@ func next() -> void:
 	pause() # First cleanup the map
 	mapTransition()
 	$Player.position = $Map/PlayerSpawn.position
+	$Player.scale = ($Player.scale + Vector2(0.2, 0.2))
 	$Player.show()
 	$Map.generate()
 	$Map.fixMap()
