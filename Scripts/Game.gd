@@ -8,24 +8,29 @@ func _ready() -> void:
 	var _scoreChange = $CanvasLayer/ViewportContainer/Viewport/HUD.connect("scoreChange", self, "next")
 	var _startButton = $CanvasLayer/ViewportContainer/Viewport/Menu/StartButton.connect("pressed", self, "start")
 	var _quitButton = $CanvasLayer/ViewportContainer/Viewport/Menu/QuitButton.connect("pressed", self, "quit")
+	var _menuButton = $CanvasLayer/ViewportContainer/Viewport/GameOver/MenuButton.connect("pressed", self, "mainMenu")
+	var _restartButton = $CanvasLayer/ViewportContainer/Viewport/GameOver/RestartButton.connect("pressed", self, "start")
 	var _playerHit = $Player.connect("gameover", self, "gameOver")
 
 func gameOver() -> void:
 	print("gameover bruv")
 	$CanvasLayer/ViewportContainer/Viewport/HUD.reset()
 	pause()
-	mainMenu()
+	$CanvasLayer/ViewportContainer/Viewport/GameOver.visible = true
 
 func mainMenu() -> void:
 	$CanvasLayer/ViewportContainer/Viewport/HUD.hide()
 	$CanvasLayer/ViewportContainer/Viewport/Menu.show()
 	$CanvasLayer/ViewportContainer/Viewport/Menu/AnimationPlayer.play("Jam")
 	$CanvasModulate.visible = false
+	$CanvasLayer/ViewportContainer/Viewport/GameOver.visible = false
 
 func quit() -> void:
 	get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)
 
 func start() -> void:
+	$Enemies.maxSpawnedEnemies = 1 # Reset enemy counter
+	$CanvasLayer/ViewportContainer/Viewport/GameOver.visible = false
 	$CanvasLayer/ViewportContainer/Viewport/HUD.show()
 	$CanvasLayer/ViewportContainer/Viewport/Menu.hide()
 	# Start first game, without enemies

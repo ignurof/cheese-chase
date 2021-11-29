@@ -34,5 +34,6 @@ func updateAI() -> void:
 
 func despawnEnemies() -> void:
 	enemyList = [] # Reset array
+	spawnedEnemies = 0
 	# Remove enemies
 	get_tree().call_group("enemies", "queue_free")
