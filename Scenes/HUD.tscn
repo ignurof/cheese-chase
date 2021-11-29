@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Art/Rubik-VariableFont_wght.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Art/IMG_2388.PNG" type="Texture" id=2]
 [ext_resource path="res://Scripts/HUD.gd" type="Script" id=3]
+[ext_resource path="res://Art/mouse-1.PNG" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -14,26 +15,41 @@ size = 64
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=4]
-resource_name = "Size"
-length = 3.0
+[sub_resource type="Animation" id=6]
+resource_name = "mouse"
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedLabel:rect_scale")
+tracks/0/path = NodePath("TextureRect:rect_scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.5 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 2, 2 ) ]
+"values": [ Vector2( 0.2, 0.2 ), Vector2( 0.3, 0.3 ) ]
 }
 
 [sub_resource type="DynamicFont" id=3]
 size = 64
 font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "cheese"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.25, 0.25 ), Vector2( 0.33, 0.33 ) ]
+}
 
 [node name="HUD" type="Control"]
 anchor_right = 1.0
@@ -47,19 +63,20 @@ __meta__ = {
 [node name="Score" type="RichTextLabel" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 30.0
-margin_top = -38.0
-margin_right = 94.0
-margin_bottom = 3.0
+margin_left = 48.0
+margin_top = -51.0
+margin_right = 112.0
+margin_bottom = -10.0
 custom_fonts/normal_font = SubResource( 1 )
 text = "0"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -31.0001
-margin_right = 1024.0
-margin_bottom = 993.0
+margin_left = 18.0
+margin_top = -44.0001
+margin_right = 1042.0
+margin_bottom = 980.0
 rect_scale = Vector2( 0.025, 0.025 )
 texture = ExtResource( 2 )
 __meta__ = {
@@ -72,20 +89,18 @@ margin_left = -64.0
 margin_top = -64.0
 margin_right = 1344.0
 margin_bottom = 768.0
-color = Color( 0.462745, 0.286275, 0.231373, 1 )
+color = Color( 0.00784314, 0.215686, 0.156863, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="MapTransition"]
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
 margin_left = -156.5
-margin_top = -38.0
+margin_top = 192.0
 margin_right = 156.5
-margin_bottom = 38.0
+margin_bottom = 268.0
 custom_fonts/font = SubResource( 2 )
 text = "Get Ready!"
 __meta__ = {
@@ -97,19 +112,50 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -103.0
-margin_top = -193.0
-margin_right = 105.625
-margin_bottom = -117.0
+margin_left = -104.313
+margin_top = -96.0
+margin_right = 104.313
+margin_bottom = -20.0
 rect_pivot_offset = Vector2( 104, 0 )
 custom_fonts/font = SubResource( 2 )
-text = "Size +1"
+text = "Size
+"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MapTransition"]
-anims/Size = SubResource( 4 )
+[node name="AnimatedLabel" type="Label" parent="MapTransition/AnimatedLabel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 34.0
+margin_top = -79.5
+margin_right = 242.625
+margin_bottom = -3.5
+rect_pivot_offset = Vector2( 104, 0 )
+custom_colors/font_color = Color( 1, 0.866667, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "+1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="MapTransition"]
+margin_left = 192.0
+margin_top = 128.0
+margin_right = 1216.0
+margin_bottom = 1152.0
+rect_rotation = 45.0
+rect_scale = Vector2( 0.280224, 0.280224 )
+rect_pivot_offset = Vector2( 512, 512 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MousePlayer" type="AnimationPlayer" parent="MapTransition"]
+anims/mouse = SubResource( 6 )
 
 [node name="FirstTransition" type="ColorRect" parent="."]
 visible = false
@@ -117,19 +163,36 @@ margin_left = -39.0
 margin_top = -49.0
 margin_right = 1335.0
 margin_bottom = 777.0
-color = Color( 0.462745, 0.286275, 0.231373, 1 )
+color = Color( 0.00784314, 0.215686, 0.156863, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="FirstTransition"]
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
 margin_left = -230.5
-margin_top = -38.0
+margin_top = 177.0
 margin_right = 230.5
-margin_bottom = 38.0
+margin_bottom = 253.0
 custom_fonts/font = SubResource( 3 )
 text = "Get the Cheese!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TextureRect" type="TextureRect" parent="FirstTransition"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -520.0
+margin_top = -108.0
+margin_right = 504.0
+margin_bottom = 916.0
+rect_scale = Vector2( 0.267639, 0.267639 )
+rect_pivot_offset = Vector2( 512, 0 )
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FirstTransition"]
+anims/cheese = SubResource( 5 )

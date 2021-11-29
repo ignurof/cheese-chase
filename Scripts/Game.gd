@@ -66,13 +66,14 @@ func pause() -> void:
 func mapTransition() -> void:
 	# Map transition
 	$CanvasLayer/ViewportContainer/Viewport/HUD/MapTransition.show()
-	$CanvasLayer/ViewportContainer/Viewport/HUD/MapTransition/AnimationPlayer.play("Size")
+	$CanvasLayer/ViewportContainer/Viewport/HUD/MapTransition/MousePlayer.play("mouse")
 	yield(get_tree().create_timer(3.0), "timeout")
 	$CanvasLayer/ViewportContainer/Viewport/HUD/MapTransition.hide()
 	$CanvasModulate.visible = true
 
 func firstTransition() -> void:
 	$CanvasLayer/ViewportContainer/Viewport/HUD/FirstTransition.show()
+	$CanvasLayer/ViewportContainer/Viewport/HUD/FirstTransition/AnimationPlayer.play("cheese")
 	yield(get_tree().create_timer(3.0), "timeout")
 	$CanvasLayer/ViewportContainer/Viewport/HUD/FirstTransition.hide()
 	$CanvasModulate.visible = true
