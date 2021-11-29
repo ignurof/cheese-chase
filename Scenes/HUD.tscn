@@ -45,22 +45,26 @@ __meta__ = {
 }
 
 [node name="Score" type="RichTextLabel" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_right = 64.0
-margin_bottom = 64.0
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_top = -38.0
+margin_right = 94.0
+margin_bottom = 3.0
 custom_fonts/normal_font = SubResource( 1 )
 text = "0"
 
 [node name="TextureRect" type="TextureRect" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -27.9998
-margin_top = 6.0
-margin_right = 996.0
-margin_bottom = 1030.0
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -31.0001
+margin_right = 1024.0
+margin_bottom = 993.0
 rect_scale = Vector2( 0.025, 0.025 )
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MapTransition" type="ColorRect" parent="."]
 visible = false

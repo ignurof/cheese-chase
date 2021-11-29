@@ -8,7 +8,7 @@ signal pickup
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var _hit = $Area2D.connect("body_entered", self, "pickup")
-
+	$AnimationPlayer.play("pulsing")
 
 func pickup(body) -> void:
 	if body.name == "Player": # Area2D detects the tilemap too
