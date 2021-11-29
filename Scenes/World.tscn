@@ -12,7 +12,13 @@
 [node name="World" type="Node"]
 script = ExtResource( 5 )
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.0588235, 0.0588235, 0.0588235, 1 )
+
 [node name="Map" parent="." instance=ExtResource( 2 )]
+
+[node name="Cheese" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1253, 87 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 32, 672 )
@@ -27,9 +33,21 @@ enemy = ExtResource( 4 )
 [node name="AITimer" type="Timer" parent="Enemies"]
 wait_time = 0.3
 
-[node name="Cheese" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1253, 87 )
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HUD" parent="." instance=ExtResource( 7 )]
+[node name="ViewportContainer" type="ViewportContainer" parent="CanvasLayer"]
+margin_right = 1280.0
+margin_bottom = 720.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Menu" parent="." instance=ExtResource( 8 )]
+[node name="Viewport" type="Viewport" parent="CanvasLayer/ViewportContainer"]
+size = Vector2( 1280, 720 )
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="HUD" parent="CanvasLayer/ViewportContainer/Viewport" instance=ExtResource( 7 )]
+
+[node name="Menu" parent="CanvasLayer/ViewportContainer/Viewport" instance=ExtResource( 8 )]

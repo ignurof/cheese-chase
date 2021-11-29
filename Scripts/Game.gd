@@ -5,28 +5,29 @@ extends Node
 func _ready() -> void:
 	pause() # First level
 	mainMenu()
-	var _scoreChange = $HUD.connect("scoreChange", self, "next")
-	var _startButton = $Menu/StartButton.connect("pressed", self, "start")
-	var _quitButton = $Menu/QuitButton.connect("pressed", self, "quit")
+	var _scoreChange = $CanvasLayer/ViewportContainer/Viewport/HUD.connect("scoreChange", self, "next")
+	var _startButton = $CanvasLayer/ViewportContainer/Viewport/Menu/StartButton.connect("pressed", self, "start")
+	var _quitButton = $CanvasLayer/ViewportContainer/Viewport/Menu/QuitButton.connect("pressed", self, "quit")
 	var _playerHit = $Player.connect("gameover", self, "gameOver")
 
 func gameOver() -> void:
 	print("gameover bruv")
-	$HUD.reset()
+	$CanvasLayer/ViewportContainer/Viewport/HUD.reset()
 	pause()
 	mainMenu()
 
 func mainMenu() -> void:
-	$HUD.hide()
-	$Menu.show()
-	$Menu/AnimationPlayer.play("Jam")
+	$CanvasLayer/ViewportContainer/Viewport/HUD.hide()
+	$CanvasLayer/ViewportContainer/Viewport/Menu.show()
+	$CanvasLayer/ViewportContainer/Viewport/Menu/AnimationPlayer.play("Jam")
+	$CanvasModulate.visible = false
 
 func quit() -> void:
 	get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)
 
 func start() -> void:
-	$HUD.show()
-	$Menu.hide()
+	$CanvasLayer/ViewportContainer/Viewport/HUD.show()
+	$CanvasLayer/ViewportContainer/Viewport/Menu.hide()
 	# Start first game, without enemies
 	firstTransition()
 	$Player.position = $Map/PlayerSpawn.position
@@ -57,14 +58,15 @@ func pause() -> void:
 
 func mapTransition() -> void:
 	# Map transition
-	$HUD/MapTransition.show()
-	$HUD/MapTransition/AnimationPlayer.play("Size")
+	$CanvasLayer/ViewportContainer/Viewport/HUD/MapTransition.show()
+	$CanvasLayer/ViewportContainer/Viewport/HUD/MapTransition/AnimationPlayer.play("Size")
 	yield(get_tree().create_timer(3.0), "timeout")
-	$HUD/MapTransition.hide()
+	$CanvasLayer/ViewportContainer/Viewport/HUD/MapTransition.hide()
+	$CanvasModulate.visible = true
 
 func firstTransition() -> void:
-	$HUD/FirstTransition.show()
+	$CanvasLayer/ViewportContainer/Viewport/HUD/FirstTransition.show()
 	yield(get_tree().create_timer(3.0), "timeout")
-	$HUD/FirstTransition.hide()
+	$CanvasLayer/ViewportContainer/Viewport/HUD/FirstTransition.hide()
+	$CanvasModulate.visible = true
 
-## TODO: Gör en gameover när fienden går in i spelaren
