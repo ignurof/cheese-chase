@@ -1,6 +1,5 @@
 extends Node
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pause() # First level
@@ -13,6 +12,7 @@ func _ready() -> void:
 	var _playerHit = $Player.connect("gameover", self, "gameOver")
 
 func gameOver() -> void:
+	$DeathSound.play()
 	print("gameover bruv")
 	$CanvasLayer/ViewportContainer/Viewport/HUD.reset()
 	pause()
@@ -24,11 +24,13 @@ func mainMenu() -> void:
 	$CanvasLayer/ViewportContainer/Viewport/Menu/AnimationPlayer.play("Jam")
 	$CanvasModulate.visible = false
 	$CanvasLayer/ViewportContainer/Viewport/GameOver.visible = false
+	$MenuMusic.play()
 
 func quit() -> void:
 	get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)
 
 func start() -> void:
+	$MenuMusic.stop()
 	$Enemies.maxSpawnedEnemies = 1 # Reset enemy counter
 	$CanvasLayer/ViewportContainer/Viewport/GameOver.visible = false
 	$CanvasLayer/ViewportContainer/Viewport/HUD.show()
@@ -43,6 +45,7 @@ func start() -> void:
 	$Cheese.spawn()
 
 func next() -> void:
+	$WinSound.play()
 	pause() # First cleanup the map
 	mapTransition()
 	$Player.position = $Map/PlayerSpawn.position
@@ -61,7 +64,7 @@ func pause() -> void:
 	$Enemies/SpawnTimer.stop()
 	$Enemies/AITimer.stop()
 	$Enemies.despawnEnemies()
-
+	$GameMusic.stop()
 
 func mapTransition() -> void:
 	# Map transition
@@ -70,6 +73,7 @@ func mapTransition() -> void:
 	yield(get_tree().create_timer(3.0), "timeout")
 	$CanvasLayer/ViewportContainer/Viewport/HUD/MapTransition.hide()
 	$CanvasModulate.visible = true
+	$GameMusic.play()
 
 func firstTransition() -> void:
 	$CanvasLayer/ViewportContainer/Viewport/HUD/FirstTransition.show()
@@ -77,4 +81,5 @@ func firstTransition() -> void:
 	yield(get_tree().create_timer(3.0), "timeout")
 	$CanvasLayer/ViewportContainer/Viewport/HUD/FirstTransition.hide()
 	$CanvasModulate.visible = true
+	$GameMusic.play()
 
