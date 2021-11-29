@@ -46,7 +46,7 @@ func next() -> void:
 	pause() # First cleanup the map
 	mapTransition()
 	$Player.position = $Map/PlayerSpawn.position
-	$Player.scale = ($Player.scale + Vector2(0.2, 0.2))
+	$Player.scale = ($Player.scale + Vector2(0.4, 0.4))
 	$Player.show()
 	$Map.generate()
 	$Map.fixMap()

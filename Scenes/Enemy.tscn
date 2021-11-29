@@ -16,6 +16,7 @@ animations = [ {
 radius = 6.0
 
 [node name="Enemy" type="KinematicBody2D" groups=["enemies"]]
+collision_layer = 2
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
