@@ -18,15 +18,15 @@
 script = ExtResource( 5 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0, 0, 0, 1 )
 
 [node name="Map" parent="." instance=ExtResource( 2 )]
 
 [node name="Cheese" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1253, 87 )
+position = Vector2( 1243, 284 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 32, 672 )
-moveSpeed = 506
 
 [node name="Enemies" type="Node2D" parent="."]
 script = ExtResource( 3 )
@@ -60,12 +60,16 @@ render_target_update_mode = 3
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
+volume_db = -10.0
 
 [node name="GameMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
+volume_db = -10.0
 
 [node name="WinSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
+volume_db = -10.0
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
+volume_db = -10.0
