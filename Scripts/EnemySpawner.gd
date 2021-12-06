@@ -12,7 +12,7 @@ var maxSpawnedEnemies : int = 1
 var enemyList : Array
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	var _spawnTimer = $SpawnTimer.connect("timeout", self, "enemySpawner")
 	var _aiTimer = $AITimer.connect("timeout", self, "updateAI")
 

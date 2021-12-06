@@ -25,7 +25,7 @@ func updatePath() -> void:
 		queue_free()
 
 # /2019/11/19/godot-tutorial-how-to-use-navigation2d-for-pathfinding/
-func _process(delta) -> void:
+func _physics_process(delta) -> void:
 	# Calculate the movement distance for this frame
 	var distance_to_walk = speed * delta
 	
